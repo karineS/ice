@@ -8,8 +8,8 @@ string body;
 interface Forum{
 string theme;
 string moderator;
-boolean postMessage( Message m );
+bool postMessage( Message m );
 Message getMessage(  string title );
-boolean removeMessage( string title );
+bool removeMessage( string title );
 
 };
