@@ -8,8 +8,8 @@ module TP1 {
 	};
 	
 	interface Forum {
-	string theme;
-	string moderator;
+	string getTheme();
+	string getModerator();
 	bool postMessage(Message m);
 	Message getMessage(  string title );
 	bool removeMessage( string title );
