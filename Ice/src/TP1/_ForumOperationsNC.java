@@ -36,4 +36,6 @@ public interface _ForumOperationsNC
         throws Reject;
 
     Message[] getMessages();
+
+    void getInfo(Ice.StringHolder theme, Ice.StringHolder moderator, Ice.LongHolder size);
 }

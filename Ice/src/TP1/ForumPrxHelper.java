@@ -22,6 +22,120 @@ package TP1;
 
 public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements ForumPrx
 {
+    public void
+    getInfo(Ice.StringHolder theme, Ice.StringHolder moderator, Ice.LongHolder size)
+    {
+        getInfo(theme, moderator, size, null, false);
+    }
+
+    public void
+    getInfo(Ice.StringHolder theme, Ice.StringHolder moderator, Ice.LongHolder size, java.util.Map<String, String> __ctx)
+    {
+        getInfo(theme, moderator, size, __ctx, true);
+    }
+
+    private void
+    getInfo(Ice.StringHolder theme, Ice.StringHolder moderator, Ice.LongHolder size, java.util.Map<String, String> __ctx, boolean __explicitCtx)
+    {
+        if(__explicitCtx && __ctx == null)
+        {
+            __ctx = _emptyContext;
+        }
+        int __cnt = 0;
+        while(true)
+        {
+            Ice._ObjectDel __delBase = null;
+            try
+            {
+                __checkTwowayOnly("getInfo");
+                __delBase = __getDelegate(false);
+                _ForumDel __del = (_ForumDel)__delBase;
+                __del.getInfo(theme, moderator, size, __ctx);
+                return;
+            }
+            catch(IceInternal.LocalExceptionWrapper __ex)
+            {
+                __handleExceptionWrapper(__delBase, __ex);
+            }
+            catch(Ice.LocalException __ex)
+            {
+                __cnt = __handleException(__delBase, __ex, null, __cnt);
+            }
+        }
+    }
+
+    private static final String __getInfo_name = "getInfo";
+
+    public Ice.AsyncResult begin_getInfo()
+    {
+        return begin_getInfo(null, false, null);
+    }
+
+    public Ice.AsyncResult begin_getInfo(java.util.Map<String, String> __ctx)
+    {
+        return begin_getInfo(__ctx, true, null);
+    }
+
+    public Ice.AsyncResult begin_getInfo(Ice.Callback __cb)
+    {
+        return begin_getInfo(null, false, __cb);
+    }
+
+    public Ice.AsyncResult begin_getInfo(java.util.Map<String, String> __ctx, Ice.Callback __cb)
+    {
+        return begin_getInfo(__ctx, true, __cb);
+    }
+
+    public Ice.AsyncResult begin_getInfo(Callback_Forum_getInfo __cb)
+    {
+        return begin_getInfo(null, false, __cb);
+    }
+
+    public Ice.AsyncResult begin_getInfo(java.util.Map<String, String> __ctx, Callback_Forum_getInfo __cb)
+    {
+        return begin_getInfo(__ctx, true, __cb);
+    }
+
+    private Ice.AsyncResult begin_getInfo(java.util.Map<String, String> __ctx, boolean __explicitCtx, IceInternal.CallbackBase __cb)
+    {
+        __checkAsyncTwowayOnly(__getInfo_name);
+        IceInternal.OutgoingAsync __result = new IceInternal.OutgoingAsync(this, __getInfo_name, __cb);
+        try
+        {
+            __result.__prepare(__getInfo_name, Ice.OperationMode.Normal, __ctx, __explicitCtx);
+            IceInternal.BasicStream __os = __result.__os();
+            __os.endWriteEncaps();
+            __result.__send(true);
+        }
+        catch(Ice.LocalException __ex)
+        {
+            __result.__exceptionAsync(__ex);
+        }
+        return __result;
+    }
+
+    public void end_getInfo(Ice.StringHolder theme, Ice.StringHolder moderator, Ice.LongHolder size, Ice.AsyncResult __result)
+    {
+        Ice.AsyncResult.__check(__result, this, __getInfo_name);
+        if(!__result.__wait())
+        {
+            try
+            {
+                __result.__throwUserException();
+            }
+            catch(Ice.UserException __ex)
+            {
+                throw new Ice.UnknownUserException(__ex.ice_name(), __ex);
+            }
+        }
+        IceInternal.BasicStream __is = __result.__is();
+        __is.startReadEncaps();
+        theme.value = __is.readString();
+        moderator.value = __is.readString();
+        size.value = __is.readLong();
+        __is.endReadEncaps();
+    }
+
     public Message
     getMessage(String title)
         throws Reject

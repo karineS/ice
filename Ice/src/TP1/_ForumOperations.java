@@ -36,4 +36,6 @@ public interface _ForumOperations
         throws Reject;
 
     Message[] getMessages(Ice.Current __current);
+
+    void getInfo(Ice.StringHolder theme, Ice.StringHolder moderator, Ice.LongHolder size, Ice.Current __current);
 }

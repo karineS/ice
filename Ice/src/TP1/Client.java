@@ -1,5 +1,8 @@
 package TP1;
 
+import Ice.LongHolder;
+import Ice.StringHolder;
+
 public class Client {
 	public static void main(String[] args) {
 		int status = 0;
@@ -29,7 +32,13 @@ public class Client {
 				System.out.println("Message : " + m3.body);
 			}
 			System.out.println("--------------------------");
-
+			StringHolder themeHolder = new StringHolder();
+			StringHolder moderatorHolder = new StringHolder();
+			LongHolder sizeHolder = new LongHolder();
+			forum.getInfo(themeHolder,moderatorHolder,sizeHolder);
+			System.out.println("Theme : " + themeHolder.value);
+			System.out.println("Modérateur : " + moderatorHolder.value);
+			System.out.println("Nombre de messages : " + sizeHolder.value);
             
         } catch (Ice.LocalException e) {
             e.printStackTrace();

@@ -138,4 +138,22 @@ public interface ForumPrx extends Ice.ObjectPrx
     public Ice.AsyncResult begin_getMessages(java.util.Map<String, String> __ctx, Callback_Forum_getMessages __cb);
 
     public Message[] end_getMessages(Ice.AsyncResult __result);
+
+    public void getInfo(Ice.StringHolder theme, Ice.StringHolder moderator, Ice.LongHolder size);
+
+    public void getInfo(Ice.StringHolder theme, Ice.StringHolder moderator, Ice.LongHolder size, java.util.Map<String, String> __ctx);
+
+    public Ice.AsyncResult begin_getInfo();
+
+    public Ice.AsyncResult begin_getInfo(java.util.Map<String, String> __ctx);
+
+    public Ice.AsyncResult begin_getInfo(Ice.Callback __cb);
+
+    public Ice.AsyncResult begin_getInfo(java.util.Map<String, String> __ctx, Ice.Callback __cb);
+
+    public Ice.AsyncResult begin_getInfo(Callback_Forum_getInfo __cb);
+
+    public Ice.AsyncResult begin_getInfo(java.util.Map<String, String> __ctx, Callback_Forum_getInfo __cb);
+
+    public void end_getInfo(Ice.StringHolder theme, Ice.StringHolder moderator, Ice.LongHolder size, Ice.AsyncResult __result);
 }

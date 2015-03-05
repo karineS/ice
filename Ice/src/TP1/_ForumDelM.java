@@ -22,6 +22,45 @@ package TP1;
 
 public final class _ForumDelM extends Ice._ObjectDelM implements _ForumDel
 {
+    public void
+    getInfo(Ice.StringHolder theme, Ice.StringHolder moderator, Ice.LongHolder size, java.util.Map<String, String> __ctx)
+        throws IceInternal.LocalExceptionWrapper
+    {
+        IceInternal.Outgoing __og = __handler.getOutgoing("getInfo", Ice.OperationMode.Normal, __ctx);
+        try
+        {
+            boolean __ok = __og.invoke();
+            try
+            {
+                if(!__ok)
+                {
+                    try
+                    {
+                        __og.throwUserException();
+                    }
+                    catch(Ice.UserException __ex)
+                    {
+                        throw new Ice.UnknownUserException(__ex.ice_name(), __ex);
+                    }
+                }
+                IceInternal.BasicStream __is = __og.is();
+                __is.startReadEncaps();
+                theme.value = __is.readString();
+                moderator.value = __is.readString();
+                size.value = __is.readLong();
+                __is.endReadEncaps();
+            }
+            catch(Ice.LocalException __ex)
+            {
+                throw new IceInternal.LocalExceptionWrapper(__ex, false);
+            }
+        }
+        finally
+        {
+            __handler.reclaimOutgoing(__og);
+        }
+    }
+
     public Message
     getMessage(String title, java.util.Map<String, String> __ctx)
         throws IceInternal.LocalExceptionWrapper,

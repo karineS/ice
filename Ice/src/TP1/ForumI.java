@@ -3,6 +3,8 @@ package TP1;
 import java.util.concurrent.ConcurrentHashMap;
 
 import Ice.Current;
+import Ice.LongHolder;
+import Ice.StringHolder;
 
 public class ForumI extends _ForumDisp {
 	private String theme;
@@ -40,6 +42,14 @@ public class ForumI extends _ForumDisp {
 		if(messages.remove(title)!=null)
 			throw new Reject("RemoveMessage :"+
 					title + " doesn't exist!");
+		
+	}
+
+	public void getInfo(StringHolder theme, StringHolder moderator,
+			LongHolder size, Current __current) {
+		theme.value=this.theme;
+		moderator.value=this.moderator;
+		size.value=messages.size();	
 		
 	}
 	

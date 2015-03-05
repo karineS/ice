@@ -15,5 +15,8 @@ module TP1 {
 	Message getMessage(  string title ) throws Reject;
 	void removeMessage( string title ) throws Reject;
 	MessageSet getMessages();
+	void getInfo ( out string theme , out string moderator ,
+out long size );
+	
 	};
 };

@@ -42,4 +42,7 @@ public interface _ForumDel extends Ice._ObjectDel
 
     Message[] getMessages(java.util.Map<String, String> __ctx)
         throws IceInternal.LocalExceptionWrapper;
+
+    void getInfo(Ice.StringHolder theme, Ice.StringHolder moderator, Ice.LongHolder size, java.util.Map<String, String> __ctx)
+        throws IceInternal.LocalExceptionWrapper;
 }
