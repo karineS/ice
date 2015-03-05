@@ -24,18 +24,21 @@ public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements For
 {
     public Message
     getMessage(String title)
+        throws Reject
     {
         return getMessage(title, null, false);
     }
 
     public Message
     getMessage(String title, java.util.Map<String, String> __ctx)
+        throws Reject
     {
         return getMessage(title, __ctx, true);
     }
 
     private Message
     getMessage(String title, java.util.Map<String, String> __ctx, boolean __explicitCtx)
+        throws Reject
     {
         if(__explicitCtx && __ctx == null)
         {
@@ -115,6 +118,7 @@ public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements For
     }
 
     public Message end_getMessage(Ice.AsyncResult __result)
+        throws Reject
     {
         Ice.AsyncResult.__check(__result, this, __getMessage_name);
         if(!__result.__wait())
@@ -122,6 +126,10 @@ public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements For
             try
             {
                 __result.__throwUserException();
+            }
+            catch(Reject __ex)
+            {
+                throw __ex;
             }
             catch(Ice.UserException __ex)
             {
@@ -476,20 +484,23 @@ public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements For
         return __ret;
     }
 
-    public boolean
+    public void
     postMessage(Message m)
+        throws Reject
     {
-        return postMessage(m, null, false);
+        postMessage(m, null, false);
     }
 
-    public boolean
+    public void
     postMessage(Message m, java.util.Map<String, String> __ctx)
+        throws Reject
     {
-        return postMessage(m, __ctx, true);
+        postMessage(m, __ctx, true);
     }
 
-    private boolean
+    private void
     postMessage(Message m, java.util.Map<String, String> __ctx, boolean __explicitCtx)
+        throws Reject
     {
         if(__explicitCtx && __ctx == null)
         {
@@ -504,7 +515,8 @@ public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements For
                 __checkTwowayOnly("postMessage");
                 __delBase = __getDelegate(false);
                 _ForumDel __del = (_ForumDel)__delBase;
-                return __del.postMessage(m, __ctx);
+                __del.postMessage(m, __ctx);
+                return;
             }
             catch(IceInternal.LocalExceptionWrapper __ex)
             {
@@ -568,7 +580,8 @@ public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements For
         return __result;
     }
 
-    public boolean end_postMessage(Ice.AsyncResult __result)
+    public void end_postMessage(Ice.AsyncResult __result)
+        throws Reject
     {
         Ice.AsyncResult.__check(__result, this, __postMessage_name);
         if(!__result.__wait())
@@ -577,33 +590,36 @@ public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements For
             {
                 __result.__throwUserException();
             }
+            catch(Reject __ex)
+            {
+                throw __ex;
+            }
             catch(Ice.UserException __ex)
             {
                 throw new Ice.UnknownUserException(__ex.ice_name(), __ex);
             }
         }
-        boolean __ret;
         IceInternal.BasicStream __is = __result.__is();
-        __is.startReadEncaps();
-        __ret = __is.readBool();
-        __is.endReadEncaps();
-        return __ret;
+        __is.skipEmptyEncaps();
     }
 
-    public boolean
+    public void
     removeMessage(String title)
+        throws Reject
     {
-        return removeMessage(title, null, false);
+        removeMessage(title, null, false);
     }
 
-    public boolean
+    public void
     removeMessage(String title, java.util.Map<String, String> __ctx)
+        throws Reject
     {
-        return removeMessage(title, __ctx, true);
+        removeMessage(title, __ctx, true);
     }
 
-    private boolean
+    private void
     removeMessage(String title, java.util.Map<String, String> __ctx, boolean __explicitCtx)
+        throws Reject
     {
         if(__explicitCtx && __ctx == null)
         {
@@ -618,7 +634,8 @@ public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements For
                 __checkTwowayOnly("removeMessage");
                 __delBase = __getDelegate(false);
                 _ForumDel __del = (_ForumDel)__delBase;
-                return __del.removeMessage(title, __ctx);
+                __del.removeMessage(title, __ctx);
+                return;
             }
             catch(IceInternal.LocalExceptionWrapper __ex)
             {
@@ -682,7 +699,8 @@ public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements For
         return __result;
     }
 
-    public boolean end_removeMessage(Ice.AsyncResult __result)
+    public void end_removeMessage(Ice.AsyncResult __result)
+        throws Reject
     {
         Ice.AsyncResult.__check(__result, this, __removeMessage_name);
         if(!__result.__wait())
@@ -691,17 +709,17 @@ public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements For
             {
                 __result.__throwUserException();
             }
+            catch(Reject __ex)
+            {
+                throw __ex;
+            }
             catch(Ice.UserException __ex)
             {
                 throw new Ice.UnknownUserException(__ex.ice_name(), __ex);
             }
         }
-        boolean __ret;
         IceInternal.BasicStream __is = __result.__is();
-        __is.startReadEncaps();
-        __ret = __is.readBool();
-        __is.endReadEncaps();
-        return __ret;
+        __is.skipEmptyEncaps();
     }
 
     public static ForumPrx

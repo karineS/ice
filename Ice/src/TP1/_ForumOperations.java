@@ -26,11 +26,14 @@ public interface _ForumOperations
 
     String getModerator(Ice.Current __current);
 
-    boolean postMessage(Message m, Ice.Current __current);
+    void postMessage(Message m, Ice.Current __current)
+        throws Reject;
 
-    Message getMessage(String title, Ice.Current __current);
+    Message getMessage(String title, Ice.Current __current)
+        throws Reject;
 
-    boolean removeMessage(String title, Ice.Current __current);
+    void removeMessage(String title, Ice.Current __current)
+        throws Reject;
 
     Message[] getMessages(Ice.Current __current);
 }

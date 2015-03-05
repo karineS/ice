@@ -17,20 +17,30 @@ public class ForumI extends _ForumDisp {
 		return moderator;
 	}
 
-	public boolean postMessage(Message m, Current __current) {
-		return messages.putIfAbsent(m.title, m)!=null;
-	}
-
-	public Message getMessage(String title, Current __current) {
-		return messages.get(title);
-	}
-
-	public boolean removeMessage(String title, Current __current) {
-		return messages.remove(title)!=null;
-	}
 
 	public Message[] getMessages(Current __current) {
 		return messages.values().toArray(new Message[messages.size()]);
+	}
+
+	public void postMessage(Message m, Current __current) throws Reject {
+		if(messages.putIfAbsent(m.title, m)!=null)
+			throw new Reject("PostMessage :"+
+					m.title + " already exists!");
+		
+	}
+
+	public Message getMessage(String title, Current __current) throws Reject {
+		Message m=messages.get(title);
+		if(m==null)throw new Reject("GetMessage :"+
+				m.title + " doesn't exist!");
+		return m;
+	}
+
+	public void removeMessage(String title, Current __current) throws Reject {
+		if(messages.remove(title)!=null)
+			throw new Reject("RemoveMessage :"+
+					title + " doesn't exist!");
+		
 	}
 	
 

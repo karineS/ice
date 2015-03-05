@@ -79,6 +79,7 @@ public abstract class _ForumDisp extends Ice.ObjectImpl implements Forum
 
     public final Message
     getMessage(String title)
+        throws Reject
     {
         return getMessage(title, null);
     }
@@ -101,16 +102,18 @@ public abstract class _ForumDisp extends Ice.ObjectImpl implements Forum
         return getTheme(null);
     }
 
-    public final boolean
+    public final void
     postMessage(Message m)
+        throws Reject
     {
-        return postMessage(m, null);
+        postMessage(m, null);
     }
 
-    public final boolean
+    public final void
     removeMessage(String title)
+        throws Reject
     {
-        return removeMessage(title, null);
+        removeMessage(title, null);
     }
 
     public static Ice.DispatchStatus
@@ -146,9 +149,16 @@ public abstract class _ForumDisp extends Ice.ObjectImpl implements Forum
         m.__read(__is);
         __is.endReadEncaps();
         IceInternal.BasicStream __os = __inS.os();
-        boolean __ret = __obj.postMessage(m, __current);
-        __os.writeBool(__ret);
-        return Ice.DispatchStatus.DispatchOK;
+        try
+        {
+            __obj.postMessage(m, __current);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+        catch(Reject ex)
+        {
+            __os.writeUserException(ex);
+            return Ice.DispatchStatus.DispatchUserException;
+        }
     }
 
     public static Ice.DispatchStatus
@@ -161,9 +171,17 @@ public abstract class _ForumDisp extends Ice.ObjectImpl implements Forum
         title = __is.readString();
         __is.endReadEncaps();
         IceInternal.BasicStream __os = __inS.os();
-        Message __ret = __obj.getMessage(title, __current);
-        __ret.__write(__os);
-        return Ice.DispatchStatus.DispatchOK;
+        try
+        {
+            Message __ret = __obj.getMessage(title, __current);
+            __ret.__write(__os);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+        catch(Reject ex)
+        {
+            __os.writeUserException(ex);
+            return Ice.DispatchStatus.DispatchUserException;
+        }
     }
 
     public static Ice.DispatchStatus
@@ -176,9 +194,16 @@ public abstract class _ForumDisp extends Ice.ObjectImpl implements Forum
         title = __is.readString();
         __is.endReadEncaps();
         IceInternal.BasicStream __os = __inS.os();
-        boolean __ret = __obj.removeMessage(title, __current);
-        __os.writeBool(__ret);
-        return Ice.DispatchStatus.DispatchOK;
+        try
+        {
+            __obj.removeMessage(title, __current);
+            return Ice.DispatchStatus.DispatchOK;
+        }
+        catch(Reject ex)
+        {
+            __os.writeUserException(ex);
+            return Ice.DispatchStatus.DispatchUserException;
+        }
     }
 
     public static Ice.DispatchStatus

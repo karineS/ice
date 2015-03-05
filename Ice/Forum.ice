@@ -7,13 +7,13 @@ module TP1 {
 	string body;
 	};
 	sequence<Message> MessageSet;
-	
+	exception Reject {string message;};
 	interface Forum {
 	string getTheme();
 	string getModerator();
-	bool postMessage(Message m);
-	Message getMessage(  string title );
-	bool removeMessage( string title );
+	void postMessage(Message m) throws Reject;
+	Message getMessage(  string title ) throws Reject;
+	void removeMessage( string title ) throws Reject;
 	MessageSet getMessages();
 	};
 };

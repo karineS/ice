@@ -58,9 +58,11 @@ public interface ForumPrx extends Ice.ObjectPrx
 
     public String end_getModerator(Ice.AsyncResult __result);
 
-    public boolean postMessage(Message m);
+    public void postMessage(Message m)
+        throws Reject;
 
-    public boolean postMessage(Message m, java.util.Map<String, String> __ctx);
+    public void postMessage(Message m, java.util.Map<String, String> __ctx)
+        throws Reject;
 
     public Ice.AsyncResult begin_postMessage(Message m);
 
@@ -74,11 +76,14 @@ public interface ForumPrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_postMessage(Message m, java.util.Map<String, String> __ctx, Callback_Forum_postMessage __cb);
 
-    public boolean end_postMessage(Ice.AsyncResult __result);
+    public void end_postMessage(Ice.AsyncResult __result)
+        throws Reject;
 
-    public Message getMessage(String title);
+    public Message getMessage(String title)
+        throws Reject;
 
-    public Message getMessage(String title, java.util.Map<String, String> __ctx);
+    public Message getMessage(String title, java.util.Map<String, String> __ctx)
+        throws Reject;
 
     public Ice.AsyncResult begin_getMessage(String title);
 
@@ -92,11 +97,14 @@ public interface ForumPrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_getMessage(String title, java.util.Map<String, String> __ctx, Callback_Forum_getMessage __cb);
 
-    public Message end_getMessage(Ice.AsyncResult __result);
+    public Message end_getMessage(Ice.AsyncResult __result)
+        throws Reject;
 
-    public boolean removeMessage(String title);
+    public void removeMessage(String title)
+        throws Reject;
 
-    public boolean removeMessage(String title, java.util.Map<String, String> __ctx);
+    public void removeMessage(String title, java.util.Map<String, String> __ctx)
+        throws Reject;
 
     public Ice.AsyncResult begin_removeMessage(String title);
 
@@ -110,7 +118,8 @@ public interface ForumPrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_removeMessage(String title, java.util.Map<String, String> __ctx, Callback_Forum_removeMessage __cb);
 
-    public boolean end_removeMessage(Ice.AsyncResult __result);
+    public void end_removeMessage(Ice.AsyncResult __result)
+        throws Reject;
 
     public Message[] getMessages();
 

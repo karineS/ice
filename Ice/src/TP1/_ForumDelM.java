@@ -24,7 +24,8 @@ public final class _ForumDelM extends Ice._ObjectDelM implements _ForumDel
 {
     public Message
     getMessage(String title, java.util.Map<String, String> __ctx)
-        throws IceInternal.LocalExceptionWrapper
+        throws IceInternal.LocalExceptionWrapper,
+               Reject
     {
         IceInternal.Outgoing __og = __handler.getOutgoing("getMessage", Ice.OperationMode.Normal, __ctx);
         try
@@ -46,6 +47,10 @@ public final class _ForumDelM extends Ice._ObjectDelM implements _ForumDel
                     try
                     {
                         __og.throwUserException();
+                    }
+                    catch(Reject __ex)
+                    {
+                        throw __ex;
                     }
                     catch(Ice.UserException __ex)
                     {
@@ -188,9 +193,10 @@ public final class _ForumDelM extends Ice._ObjectDelM implements _ForumDel
         }
     }
 
-    public boolean
+    public void
     postMessage(Message m, java.util.Map<String, String> __ctx)
-        throws IceInternal.LocalExceptionWrapper
+        throws IceInternal.LocalExceptionWrapper,
+               Reject
     {
         IceInternal.Outgoing __og = __handler.getOutgoing("postMessage", Ice.OperationMode.Normal, __ctx);
         try
@@ -213,17 +219,16 @@ public final class _ForumDelM extends Ice._ObjectDelM implements _ForumDel
                     {
                         __og.throwUserException();
                     }
+                    catch(Reject __ex)
+                    {
+                        throw __ex;
+                    }
                     catch(Ice.UserException __ex)
                     {
                         throw new Ice.UnknownUserException(__ex.ice_name(), __ex);
                     }
                 }
-                IceInternal.BasicStream __is = __og.is();
-                __is.startReadEncaps();
-                boolean __ret;
-                __ret = __is.readBool();
-                __is.endReadEncaps();
-                return __ret;
+                __og.is().skipEmptyEncaps();
             }
             catch(Ice.LocalException __ex)
             {
@@ -236,9 +241,10 @@ public final class _ForumDelM extends Ice._ObjectDelM implements _ForumDel
         }
     }
 
-    public boolean
+    public void
     removeMessage(String title, java.util.Map<String, String> __ctx)
-        throws IceInternal.LocalExceptionWrapper
+        throws IceInternal.LocalExceptionWrapper,
+               Reject
     {
         IceInternal.Outgoing __og = __handler.getOutgoing("removeMessage", Ice.OperationMode.Normal, __ctx);
         try
@@ -261,17 +267,16 @@ public final class _ForumDelM extends Ice._ObjectDelM implements _ForumDel
                     {
                         __og.throwUserException();
                     }
+                    catch(Reject __ex)
+                    {
+                        throw __ex;
+                    }
                     catch(Ice.UserException __ex)
                     {
                         throw new Ice.UnknownUserException(__ex.ice_name(), __ex);
                     }
                 }
-                IceInternal.BasicStream __is = __og.is();
-                __is.startReadEncaps();
-                boolean __ret;
-                __ret = __is.readBool();
-                __is.endReadEncaps();
-                return __ret;
+                __og.is().skipEmptyEncaps();
             }
             catch(Ice.LocalException __ex)
             {

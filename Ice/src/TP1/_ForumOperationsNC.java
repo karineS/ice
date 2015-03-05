@@ -26,11 +26,14 @@ public interface _ForumOperationsNC
 
     String getModerator();
 
-    boolean postMessage(Message m);
+    void postMessage(Message m)
+        throws Reject;
 
-    Message getMessage(String title);
+    Message getMessage(String title)
+        throws Reject;
 
-    boolean removeMessage(String title);
+    void removeMessage(String title)
+        throws Reject;
 
     Message[] getMessages();
 }

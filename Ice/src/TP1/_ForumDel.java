@@ -28,14 +28,17 @@ public interface _ForumDel extends Ice._ObjectDel
     String getModerator(java.util.Map<String, String> __ctx)
         throws IceInternal.LocalExceptionWrapper;
 
-    boolean postMessage(Message m, java.util.Map<String, String> __ctx)
-        throws IceInternal.LocalExceptionWrapper;
+    void postMessage(Message m, java.util.Map<String, String> __ctx)
+        throws IceInternal.LocalExceptionWrapper,
+               Reject;
 
     Message getMessage(String title, java.util.Map<String, String> __ctx)
-        throws IceInternal.LocalExceptionWrapper;
+        throws IceInternal.LocalExceptionWrapper,
+               Reject;
 
-    boolean removeMessage(String title, java.util.Map<String, String> __ctx)
-        throws IceInternal.LocalExceptionWrapper;
+    void removeMessage(String title, java.util.Map<String, String> __ctx)
+        throws IceInternal.LocalExceptionWrapper,
+               Reject;
 
     Message[] getMessages(java.util.Map<String, String> __ctx)
         throws IceInternal.LocalExceptionWrapper;

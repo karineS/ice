@@ -24,7 +24,8 @@ public final class _ForumDelD extends Ice._ObjectDelD implements _ForumDel
 {
     public Message
     getMessage(final String title, java.util.Map<String, String> __ctx)
-        throws IceInternal.LocalExceptionWrapper
+        throws IceInternal.LocalExceptionWrapper,
+               Reject
     {
         final Ice.Current __current = new Ice.Current();
         __initCurrent(__current, "getMessage", Ice.OperationMode.Normal, __ctx);
@@ -45,8 +46,16 @@ public final class _ForumDelD extends Ice._ObjectDelD implements _ForumDel
                     {
                         throw new Ice.OperationNotExistException(__current.id, __current.facet, __current.operation);
                     }
-                    __result.value = __servant.getMessage(title, __current);
-                    return Ice.DispatchStatus.DispatchOK;
+                    try
+                    {
+                        __result.value = __servant.getMessage(title, __current);
+                        return Ice.DispatchStatus.DispatchOK;
+                    }
+                    catch(Ice.UserException __ex)
+                    {
+                        setUserException(__ex);
+                        return Ice.DispatchStatus.DispatchUserException;
+                    }
                 }
             };
             try
@@ -63,6 +72,10 @@ public final class _ForumDelD extends Ice._ObjectDelD implements _ForumDel
             {
                 __direct.destroy();
             }
+        }
+        catch(Reject __ex)
+        {
+            throw __ex;
         }
         catch(Ice.SystemException __ex)
         {
@@ -234,13 +247,13 @@ public final class _ForumDelD extends Ice._ObjectDelD implements _ForumDel
         return __result.value;
     }
 
-    public boolean
+    public void
     postMessage(final Message m, java.util.Map<String, String> __ctx)
-        throws IceInternal.LocalExceptionWrapper
+        throws IceInternal.LocalExceptionWrapper,
+               Reject
     {
         final Ice.Current __current = new Ice.Current();
         __initCurrent(__current, "postMessage", Ice.OperationMode.Normal, __ctx);
-        final Ice.BooleanHolder __result = new Ice.BooleanHolder();
         IceInternal.Direct __direct = null;
         try
         {
@@ -257,8 +270,16 @@ public final class _ForumDelD extends Ice._ObjectDelD implements _ForumDel
                     {
                         throw new Ice.OperationNotExistException(__current.id, __current.facet, __current.operation);
                     }
-                    __result.value = __servant.postMessage(m, __current);
-                    return Ice.DispatchStatus.DispatchOK;
+                    try
+                    {
+                        __servant.postMessage(m, __current);
+                        return Ice.DispatchStatus.DispatchOK;
+                    }
+                    catch(Ice.UserException __ex)
+                    {
+                        setUserException(__ex);
+                        return Ice.DispatchStatus.DispatchUserException;
+                    }
                 }
             };
             try
@@ -269,12 +290,15 @@ public final class _ForumDelD extends Ice._ObjectDelD implements _ForumDel
                     __direct.throwUserException();
                 }
                 assert __status == Ice.DispatchStatus.DispatchOK;
-                return __result.value;
             }
             finally
             {
                 __direct.destroy();
             }
+        }
+        catch(Reject __ex)
+        {
+            throw __ex;
         }
         catch(Ice.SystemException __ex)
         {
@@ -284,16 +308,15 @@ public final class _ForumDelD extends Ice._ObjectDelD implements _ForumDel
         {
             IceInternal.LocalExceptionWrapper.throwWrapper(__ex);
         }
-        return __result.value;
     }
 
-    public boolean
+    public void
     removeMessage(final String title, java.util.Map<String, String> __ctx)
-        throws IceInternal.LocalExceptionWrapper
+        throws IceInternal.LocalExceptionWrapper,
+               Reject
     {
         final Ice.Current __current = new Ice.Current();
         __initCurrent(__current, "removeMessage", Ice.OperationMode.Normal, __ctx);
-        final Ice.BooleanHolder __result = new Ice.BooleanHolder();
         IceInternal.Direct __direct = null;
         try
         {
@@ -310,8 +333,16 @@ public final class _ForumDelD extends Ice._ObjectDelD implements _ForumDel
                     {
                         throw new Ice.OperationNotExistException(__current.id, __current.facet, __current.operation);
                     }
-                    __result.value = __servant.removeMessage(title, __current);
-                    return Ice.DispatchStatus.DispatchOK;
+                    try
+                    {
+                        __servant.removeMessage(title, __current);
+                        return Ice.DispatchStatus.DispatchOK;
+                    }
+                    catch(Ice.UserException __ex)
+                    {
+                        setUserException(__ex);
+                        return Ice.DispatchStatus.DispatchUserException;
+                    }
                 }
             };
             try
@@ -322,12 +353,15 @@ public final class _ForumDelD extends Ice._ObjectDelD implements _ForumDel
                     __direct.throwUserException();
                 }
                 assert __status == Ice.DispatchStatus.DispatchOK;
-                return __result.value;
             }
             finally
             {
                 __direct.destroy();
             }
+        }
+        catch(Reject __ex)
+        {
+            throw __ex;
         }
         catch(Ice.SystemException __ex)
         {
@@ -337,6 +371,5 @@ public final class _ForumDelD extends Ice._ObjectDelD implements _ForumDel
         {
             IceInternal.LocalExceptionWrapper.throwWrapper(__ex);
         }
-        return __result.value;
     }
 }
