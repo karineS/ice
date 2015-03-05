@@ -71,6 +71,45 @@ public final class _ForumDelM extends Ice._ObjectDelM implements _ForumDel
         }
     }
 
+    public Message[]
+    getMessages(java.util.Map<String, String> __ctx)
+        throws IceInternal.LocalExceptionWrapper
+    {
+        IceInternal.Outgoing __og = __handler.getOutgoing("getMessages", Ice.OperationMode.Normal, __ctx);
+        try
+        {
+            boolean __ok = __og.invoke();
+            try
+            {
+                if(!__ok)
+                {
+                    try
+                    {
+                        __og.throwUserException();
+                    }
+                    catch(Ice.UserException __ex)
+                    {
+                        throw new Ice.UnknownUserException(__ex.ice_name(), __ex);
+                    }
+                }
+                IceInternal.BasicStream __is = __og.is();
+                __is.startReadEncaps();
+                Message[] __ret;
+                __ret = MessageSetHelper.read(__is);
+                __is.endReadEncaps();
+                return __ret;
+            }
+            catch(Ice.LocalException __ex)
+            {
+                throw new IceInternal.LocalExceptionWrapper(__ex, false);
+            }
+        }
+        finally
+        {
+            __handler.reclaimOutgoing(__og);
+        }
+    }
+
     public String
     getModerator(java.util.Map<String, String> __ctx)
         throws IceInternal.LocalExceptionWrapper

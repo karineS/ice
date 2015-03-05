@@ -28,6 +28,10 @@ public class ForumI extends _ForumDisp {
 	public boolean removeMessage(String title, Current __current) {
 		return messages.remove(title)!=null;
 	}
+
+	public Message[] getMessages(Current __current) {
+		return messages.values().toArray(new Message[messages.size()]);
+	}
 	
 
 }

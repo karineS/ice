@@ -6,6 +6,7 @@ module TP1 {
 	string date;
 	string body;
 	};
+	sequence<Message> MessageSet;
 	
 	interface Forum {
 	string getTheme();
@@ -13,5 +14,6 @@ module TP1 {
 	bool postMessage(Message m);
 	Message getMessage(  string title );
 	bool removeMessage( string title );
+	MessageSet getMessages();
 	};
 };

@@ -137,6 +137,119 @@ public final class ForumPrxHelper extends Ice.ObjectPrxHelperBase implements For
         return __ret;
     }
 
+    public Message[]
+    getMessages()
+    {
+        return getMessages(null, false);
+    }
+
+    public Message[]
+    getMessages(java.util.Map<String, String> __ctx)
+    {
+        return getMessages(__ctx, true);
+    }
+
+    private Message[]
+    getMessages(java.util.Map<String, String> __ctx, boolean __explicitCtx)
+    {
+        if(__explicitCtx && __ctx == null)
+        {
+            __ctx = _emptyContext;
+        }
+        int __cnt = 0;
+        while(true)
+        {
+            Ice._ObjectDel __delBase = null;
+            try
+            {
+                __checkTwowayOnly("getMessages");
+                __delBase = __getDelegate(false);
+                _ForumDel __del = (_ForumDel)__delBase;
+                return __del.getMessages(__ctx);
+            }
+            catch(IceInternal.LocalExceptionWrapper __ex)
+            {
+                __handleExceptionWrapper(__delBase, __ex);
+            }
+            catch(Ice.LocalException __ex)
+            {
+                __cnt = __handleException(__delBase, __ex, null, __cnt);
+            }
+        }
+    }
+
+    private static final String __getMessages_name = "getMessages";
+
+    public Ice.AsyncResult begin_getMessages()
+    {
+        return begin_getMessages(null, false, null);
+    }
+
+    public Ice.AsyncResult begin_getMessages(java.util.Map<String, String> __ctx)
+    {
+        return begin_getMessages(__ctx, true, null);
+    }
+
+    public Ice.AsyncResult begin_getMessages(Ice.Callback __cb)
+    {
+        return begin_getMessages(null, false, __cb);
+    }
+
+    public Ice.AsyncResult begin_getMessages(java.util.Map<String, String> __ctx, Ice.Callback __cb)
+    {
+        return begin_getMessages(__ctx, true, __cb);
+    }
+
+    public Ice.AsyncResult begin_getMessages(Callback_Forum_getMessages __cb)
+    {
+        return begin_getMessages(null, false, __cb);
+    }
+
+    public Ice.AsyncResult begin_getMessages(java.util.Map<String, String> __ctx, Callback_Forum_getMessages __cb)
+    {
+        return begin_getMessages(__ctx, true, __cb);
+    }
+
+    private Ice.AsyncResult begin_getMessages(java.util.Map<String, String> __ctx, boolean __explicitCtx, IceInternal.CallbackBase __cb)
+    {
+        __checkAsyncTwowayOnly(__getMessages_name);
+        IceInternal.OutgoingAsync __result = new IceInternal.OutgoingAsync(this, __getMessages_name, __cb);
+        try
+        {
+            __result.__prepare(__getMessages_name, Ice.OperationMode.Normal, __ctx, __explicitCtx);
+            IceInternal.BasicStream __os = __result.__os();
+            __os.endWriteEncaps();
+            __result.__send(true);
+        }
+        catch(Ice.LocalException __ex)
+        {
+            __result.__exceptionAsync(__ex);
+        }
+        return __result;
+    }
+
+    public Message[] end_getMessages(Ice.AsyncResult __result)
+    {
+        Ice.AsyncResult.__check(__result, this, __getMessages_name);
+        if(!__result.__wait())
+        {
+            try
+            {
+                __result.__throwUserException();
+            }
+            catch(Ice.UserException __ex)
+            {
+                throw new Ice.UnknownUserException(__ex.ice_name(), __ex);
+            }
+        }
+        Message[] __ret;
+        IceInternal.BasicStream __is = __result.__is();
+        __is.startReadEncaps();
+        __ret = MessageSetHelper.read(__is);
+        __is.endReadEncaps();
+        return __ret;
+    }
+
     public String
     getModerator()
     {

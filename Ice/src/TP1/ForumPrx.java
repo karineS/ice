@@ -111,4 +111,22 @@ public interface ForumPrx extends Ice.ObjectPrx
     public Ice.AsyncResult begin_removeMessage(String title, java.util.Map<String, String> __ctx, Callback_Forum_removeMessage __cb);
 
     public boolean end_removeMessage(Ice.AsyncResult __result);
+
+    public Message[] getMessages();
+
+    public Message[] getMessages(java.util.Map<String, String> __ctx);
+
+    public Ice.AsyncResult begin_getMessages();
+
+    public Ice.AsyncResult begin_getMessages(java.util.Map<String, String> __ctx);
+
+    public Ice.AsyncResult begin_getMessages(Ice.Callback __cb);
+
+    public Ice.AsyncResult begin_getMessages(java.util.Map<String, String> __ctx, Ice.Callback __cb);
+
+    public Ice.AsyncResult begin_getMessages(Callback_Forum_getMessages __cb);
+
+    public Ice.AsyncResult begin_getMessages(java.util.Map<String, String> __ctx, Callback_Forum_getMessages __cb);
+
+    public Message[] end_getMessages(Ice.AsyncResult __result);
 }

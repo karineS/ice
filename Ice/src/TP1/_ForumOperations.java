@@ -31,4 +31,6 @@ public interface _ForumOperations
     Message getMessage(String title, Ice.Current __current);
 
     boolean removeMessage(String title, Ice.Current __current);
+
+    Message[] getMessages(Ice.Current __current);
 }

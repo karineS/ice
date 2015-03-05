@@ -31,4 +31,6 @@ public interface _ForumOperationsNC
     Message getMessage(String title);
 
     boolean removeMessage(String title);
+
+    Message[] getMessages();
 }

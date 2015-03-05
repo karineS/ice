@@ -83,6 +83,12 @@ public abstract class _ForumDisp extends Ice.ObjectImpl implements Forum
         return getMessage(title, null);
     }
 
+    public final Message[]
+    getMessages()
+    {
+        return getMessages(null);
+    }
+
     public final String
     getModerator()
     {
@@ -175,9 +181,21 @@ public abstract class _ForumDisp extends Ice.ObjectImpl implements Forum
         return Ice.DispatchStatus.DispatchOK;
     }
 
+    public static Ice.DispatchStatus
+    ___getMessages(Forum __obj, IceInternal.Incoming __inS, Ice.Current __current)
+    {
+        __checkMode(Ice.OperationMode.Normal, __current.mode);
+        __inS.is().skipEmptyEncaps();
+        IceInternal.BasicStream __os = __inS.os();
+        Message[] __ret = __obj.getMessages(__current);
+        MessageSetHelper.write(__os, __ret);
+        return Ice.DispatchStatus.DispatchOK;
+    }
+
     private final static String[] __all =
     {
         "getMessage",
+        "getMessages",
         "getModerator",
         "getTheme",
         "ice_id",
@@ -205,33 +223,37 @@ public abstract class _ForumDisp extends Ice.ObjectImpl implements Forum
             }
             case 1:
             {
-                return ___getModerator(this, in, __current);
+                return ___getMessages(this, in, __current);
             }
             case 2:
             {
-                return ___getTheme(this, in, __current);
+                return ___getModerator(this, in, __current);
             }
             case 3:
             {
-                return ___ice_id(this, in, __current);
+                return ___getTheme(this, in, __current);
             }
             case 4:
             {
-                return ___ice_ids(this, in, __current);
+                return ___ice_id(this, in, __current);
             }
             case 5:
             {
-                return ___ice_isA(this, in, __current);
+                return ___ice_ids(this, in, __current);
             }
             case 6:
             {
-                return ___ice_ping(this, in, __current);
+                return ___ice_isA(this, in, __current);
             }
             case 7:
             {
-                return ___postMessage(this, in, __current);
+                return ___ice_ping(this, in, __current);
             }
             case 8:
+            {
+                return ___postMessage(this, in, __current);
+            }
+            case 9:
             {
                 return ___removeMessage(this, in, __current);
             }

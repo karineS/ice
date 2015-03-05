@@ -36,4 +36,7 @@ public interface _ForumDel extends Ice._ObjectDel
 
     boolean removeMessage(String title, java.util.Map<String, String> __ctx)
         throws IceInternal.LocalExceptionWrapper;
+
+    Message[] getMessages(java.util.Map<String, String> __ctx)
+        throws IceInternal.LocalExceptionWrapper;
 }

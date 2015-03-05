@@ -6,7 +6,7 @@ public class Client {
         Ice.Communicator ic = null;
         try {
             ic = Ice.Util.initialize(args);
-            Ice.ObjectPrx base = ic.stringToProxy("Forum:default -p 10001");
+            Ice.ObjectPrx base = ic.stringToProxy("Forum:default -p 10002");
             ForumPrx forum = ForumPrxHelper.checkedCast(base);
             if (forum == null)
                 throw new Error("Invalid proxy");
@@ -20,6 +20,15 @@ public class Client {
 				System.out.println("Auteur : " + tmp.author);
 				System.out.println("Message : " + tmp.body);
 			}
+			System.out.println("--------------------------");
+			Message[] ms=forum.getMessages();
+			for(Message m3: ms){
+				System.out.println();
+				System.out.println("Titre : " + m3.title);
+				System.out.println("Auteur : " + m3.author);
+				System.out.println("Message : " + m3.body);
+			}
+			System.out.println("--------------------------");
 
             
         } catch (Ice.LocalException e) {
