@@ -8,8 +8,8 @@ public class Server {
         try {
             ic = Ice.Util.initialize(args);
             Ice.ObjectAdapter adapter =
-                ic.createObjectAdapterWithEndpoints("ForumAdapter", "default -p 10002");
-            Ice.Object object = new ForumI();
+                ic.createObjectAdapterWithEndpoints("ForumAdapter", "default -p 10003");
+            Ice.Object object = new ForumI("ice","damien");
             adapter.add(object, ic.stringToIdentity("Forum"));
             adapter.activate();
             ic.waitForShutdown();

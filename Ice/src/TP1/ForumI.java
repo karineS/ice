@@ -9,8 +9,12 @@ import Ice.StringHolder;
 public class ForumI extends _ForumDisp {
 	private String theme;
 	private String moderator;
-	private ConcurrentHashMap<String,Message> messages=new ConcurrentHashMap<String,Message>();
-
+	private ConcurrentHashMap<String,Message> messages;
+	ForumI(String theme, String moderator) {
+		this.moderator =moderator;
+		this.theme=theme;
+		messages=new ConcurrentHashMap<String,Message>();
+			}
 	public String getTheme(Current __current) {
 		return theme;
 	}

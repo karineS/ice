@@ -9,7 +9,7 @@ public class Client {
         Ice.Communicator ic = null;
         try {
             ic = Ice.Util.initialize(args);
-            Ice.ObjectPrx base = ic.stringToProxy("Forum:default -p 10002");
+            Ice.ObjectPrx base = ic.stringToProxy("Forum:default -p 10003");
             ForumPrx forum = ForumPrxHelper.checkedCast(base);
             if (forum == null)
                 throw new Error("Invalid proxy");
