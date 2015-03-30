@@ -1,8 +1,6 @@
 package TP1;
-
 import Ice.LongHolder;
 import Ice.StringHolder;
-
 public class Client {
 	public static void main(String[] args) {
 		int status = 0;
@@ -59,5 +57,4 @@ public class Client {
         }
         System.exit(status);
 	}
-
 }
